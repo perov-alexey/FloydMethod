@@ -14,6 +14,13 @@ html, body {
     width: 100px;
     background-color: aquamarine;
     border: 1px solid;
+    border-radius: 50px;
+}
+
+.connectorHolder .dot-number {
+    padding-top: 40px;
+    padding-left: 45px;
+    cursor: default;
 }
 
 .container .jsplumb-overlay {
@@ -33,11 +40,15 @@ html, body {
     opacity: 0;
 }
 
+/**    Toolbar      **/
 .toolbar {
-    height: 10%;
+    height: 50px;
     background-color: black;
 }
 
-#second {
-    left: 500px;
+.toolbar-button {
+    cursor: pointer;
+    height: 40px;
+    margin-top: 5px;
+    margin-left: 5px;
 }

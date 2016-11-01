@@ -1,18 +1,11 @@
 jsPlumb.ready(function() {
-    var jsPlumbInstance = jsPlumb.getInstance({
+    window.jsPlumbInstance = jsPlumb.getInstance({
         Container: ".container",
-        Connector: "StateMachine",
-        Anchor: ["Perimeter", {shape: "Square"}],
-        Endpoint: ["Dot", {cssClass: "transparentEndpoint"}],
+        Connector: "Straight",
+        Anchor: ["Perimeter", {shape: "Circle", anchorCount: 20}],
+        Endpoint: ["Dot", {radius: 5}],
         ConnectionOverlays: [
-            ["Arrow", {location: 1}]
-        ]
-    });
-
-    jsPlumbInstance.connect({
-        source: "first",
-        target: "second",
-        overlays: [
+            ["Arrow", {location: 1}],
             ["Custom", {
                 create: function(component) {
                     var label = $("<input size='1'>");
@@ -26,7 +19,8 @@ jsPlumb.ready(function() {
         ]
     });
 
-    jsPlumbInstance.draggable($(".jsplumb-connected"), {
-        containment:true
+    jsPlumbInstance.bind("connection", function(info) {
+        addNewEndPoint(info.source);
+        addNewEndPoint(info.target);
     });
 });
