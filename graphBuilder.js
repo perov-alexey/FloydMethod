@@ -2,7 +2,7 @@ jsPlumb.ready(function() {
     window.jsPlumbInstance = jsPlumb.getInstance({
         Container: ".container",
         Connector: "Straight",
-        Anchor: ["Perimeter", {shape: "Circle", anchorCount: 20}],
+        DragOptions: { cursor: 'pointer', zIndex: 2000 },
         Endpoint: ["Dot", {radius: 5}],
         ConnectionOverlays: [
             ["Arrow", {location: 1}],
@@ -19,8 +19,21 @@ jsPlumb.ready(function() {
         ]
     });
 
-    jsPlumbInstance.bind("connection", function(info) {
-        addNewEndPoint(info.source);
-        addNewEndPoint(info.target);
+    jsPlumbInstance.bind("connectionDrag", function() {
+        $(".jsplumb-endpoint").addClass("jsplumb-connection-in-progress");
     });
+
+    jsPlumbInstance.bind("connection", function() {
+        $(".jsplumb-endpoint").removeClass("jsplumb-connection-in-progress");
+    });
+
+    jsPlumbInstance.bind("connectionAborted", function() {
+        $(".jsplumb-endpoint").removeClass("jsplumb-connection-in-progress");
+    });
+
+    jsPlumbInstance.bind("connectionDetached", function() {
+        $(".jsplumb-endpoint").removeClass("jsplumb-connection-in-progress");
+    });
+
+
 });

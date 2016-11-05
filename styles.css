@@ -36,7 +36,9 @@ html, body {
     box-shadow: 0px 0px 50px aquamarine;
 }
 
-.transparentEndpoint {
+/**    Endpoints    **/
+
+.jsplumb-endpoint:not(.jsplumb-endpoint-connected):not(.jsplumb-hover):not(.jsplumb-connection-in-progress){
     opacity: 0;
 }
 
