@@ -1,5 +1,13 @@
 var dotAmount = 0;
 
+$(document).ready(function() {
+    var preventNonDigits = function(event) {
+        return event.charCode >= 48 && event.charCode <= 57;
+    };
+    $("#firstTop").on("keypress", preventNonDigits);
+    $("#secondTop").on("keypress", preventNonDigits);
+});
+
 function addDot() {
     var newDot = $("<div class='connectorHolder'><div class='dot-number'>" + ++dotAmount + "</div></div>");
     $(".container").append(newDot);

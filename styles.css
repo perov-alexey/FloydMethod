@@ -44,6 +44,9 @@ html, body {
 
 /**    Toolbar      **/
 .toolbar {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
     height: 50px;
     background-color: black;
 }
@@ -51,6 +54,19 @@ html, body {
 .toolbar-button {
     cursor: pointer;
     height: 40px;
-    margin-top: 5px;
-    margin-left: 5px;
+    margin: 0px 5px 0px 5px;
+}
+
+.toolbar label {
+    color: white;
+}
+
+.toolbar .block-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 325px;
+}
+
+.toolbar .block-container label{
+    width: 150px;
 }

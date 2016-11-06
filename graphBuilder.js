@@ -19,7 +19,7 @@ jsPlumb.ready(function() {
                         model.setConnectionWeight(sourceNumber - 1, targetNumber - 1, +$(this).val());
                     });
                     label.on("keypress", function() {
-                        return event.charCode >= 48 && event.charCode <= 57;
+                        return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 45;
                     });
                     label.keyup();
                     return label;
