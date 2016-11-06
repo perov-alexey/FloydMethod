@@ -12,6 +12,15 @@ jsPlumb.ready(function() {
                     label.on("keyup", function() {
                         this.style.width = ((this.value.length || 1) * 7) + 'px';
                     });
+
+                    label.on("change", {component: component}, function(event) {
+                        var sourceNumber = +$(".dot-number", event.data.component.source).text();
+                        var targetNumber = +$(".dot-number", event.data.component.target).text();
+                        model.setConnectionWeight(sourceNumber - 1, targetNumber - 1, +$(this).val());
+                    });
+                    label.on("keypress", function() {
+                        return event.charCode >= 48 && event.charCode <= 57;
+                    });
                     label.keyup();
                     return label;
                 }

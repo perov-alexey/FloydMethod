@@ -17,6 +17,8 @@ function addDot() {
     jsPlumbInstance.draggable(newDot, {
         containment:true
     });
+
+    window.model.addDot();
 }
 
 function addNewEndpoints(item) {
