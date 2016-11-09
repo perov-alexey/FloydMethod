@@ -27,11 +27,12 @@ function Model() {
     };
 
     this.calculate = function() {
+        $(".highlighted").removeClass("highlighted");
         if (validateInitialConditions()) {
             var firstTop = +$("#firstTop").val();
             var secondTop = +$("#secondTop").val();
-            var result = weights.slice();
-            var solutionPathes = pathes.slice();
+            var result = $.extend(true, [], weights);
+            var solutionPathes = $.extend(true, [], pathes);
             for (var k = 0; k < result.length; k++) {
                 for (var i = 0; i < result.length; i++) {
                     for (var j = 0; j < result[i].length; j++) {
@@ -39,12 +40,16 @@ function Model() {
                             result[i][j] = result[i][k] + result[k][j];
                             solutionPathes[i][j] = k + 1;
                         }
-
+                        if (i == j && result[i][j] < 0) {
+                            alert("Обнаружен контур отрицательной длины! Дальнейшие вычисления невозможны.");
+                            return false;
+                        }
                     }
                 }
             }
-            console.dir(result);
-            console.dir(solutionPathes)
+            showShortestPath(solutionPathes, firstTop, secondTop);
+            alert("Длина кратчайшего пути: " + result[firstTop - 1][secondTop - 1] + "\n" +
+            "Кратчайший путь: " + getShortestPath(solutionPathes, firstTop, secondTop).join(", "));
         }
     };
 

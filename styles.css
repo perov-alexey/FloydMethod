@@ -23,6 +23,11 @@ html, body {
     cursor: default;
 }
 
+.container .connectorHolder.highlighted,
+.container .jsplumb-overlay.highlighted {
+    background-color: lightsalmon;
+}
+
 .container .jsplumb-overlay {
     background-color: aquamarine;
     border-radius: 10px;
@@ -32,7 +37,7 @@ html, body {
     padding-right: 10px;
 }
 
-.container .jsplumb-overlay:hover {
+.container .jsplumb-overlay:hover:not(.highlighted) {
     box-shadow: 0px 0px 50px aquamarine;
 }
 

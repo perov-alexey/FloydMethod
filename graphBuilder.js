@@ -23,7 +23,8 @@ jsPlumb.ready(function() {
                     });
                     label.keyup();
                     return label;
-                }
+                },
+                id: "weightInput"
             }]
         ]
     });
@@ -40,7 +41,8 @@ jsPlumb.ready(function() {
         $(".jsplumb-endpoint").removeClass("jsplumb-connection-in-progress");
     });
 
-    jsPlumbInstance.bind("connectionDetached", function() {
+    jsPlumbInstance.bind("connectionDetached", function(connection) {
+        model.setConnectionWeight($(connection.source).data("number") - 1, $(connection.target).data("number") - 1, Infinity);
         $(".jsplumb-endpoint").removeClass("jsplumb-connection-in-progress");
     });
 
