@@ -85,3 +85,14 @@ function getShortestPath(pathes, begin, end) {
 
     return shortestPath.reverse();
 }
+
+function arrayToString(array) {
+    var result = "";
+    $.each(array, function(i, row) {
+        $.each(row, function(j, element) {
+            result += new Array(9 - element.toString().length).fill(" ").join("") + element;
+        });
+        result += "\n";
+    });
+    return result;
+}

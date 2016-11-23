@@ -41,7 +41,8 @@ function Model() {
                             solutionPathes[i][j] = k + 1;
                         }
                         if (i == j && result[i][j] < 0) {
-                            alert("Обнаружен контур отрицательной длины! Дальнейшие вычисления невозможны.");
+                            alert("Обнаружен контур отрицательной длины! Дальнейшие вычисления невозможны.\n" +
+                                "Вершина, через которую проходит контур отрицательной длины: " + (k + 1));
                             return false;
                         }
                     }
@@ -49,7 +50,9 @@ function Model() {
             }
             showShortestPath(solutionPathes, firstTop, secondTop);
             alert("Длина кратчайшего пути: " + result[firstTop - 1][secondTop - 1] + "\n" +
-            "Кратчайший путь: " + getShortestPath(solutionPathes, firstTop, secondTop).join(", "));
+            "Кратчайший путь: " + getShortestPath(solutionPathes, firstTop, secondTop).join(", ") + "\n" +
+            "Матрица длин путей С:" + "\n" + arrayToString(result) +
+            "Дополнительная матрица V:" + "\n" + arrayToString(solutionPathes));
         }
     };
 
